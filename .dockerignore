@@ -1,0 +1,13 @@
+# Excluir archivos y directorios generados por Next.js
+.next/
+out/
+
+# Excluir archivos y directorios generados por herramientas de desarrollo
+node_modules/
+package-lock.json
+
+
+# Excluir otros archivos y directorios innecesarios para la imagen de Docker
+.git/
+.vscode/
+

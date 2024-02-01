@@ -1,0 +1,47 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+    
+  pull_request:
+    branches: [ "main" ]
+    
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Docker login
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: Get 5 characters of last commit
+      run: echo "IMAGE_TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
+
+    - name: Set Environment variables
+      run: echo "DATE=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV  
+
+    - name: Extract version from package.json
+      id: extract_version
+      run: echo ::set-output name=version::$(cat package.json | jq -r '.version')
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        #platforms: linux/amd64
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: analistait02/demo-front:${{env.DATE}}-${{ env.IMAGE_TAG }}
