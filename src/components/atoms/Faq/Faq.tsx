@@ -1,11 +1,11 @@
 'use client'
 import { Accordion, AccordionItem } from '@nextui-org/accordion'
 import { motion } from 'framer-motion'
-export default function Faq () {
+export default function Faq() {
   const defaultContent =
     'Here is the content of the accordion. You can put any elements here.'
   return (
-    <section className='relative max-w-screen-xl mx-auto px-4 py-28 gap-12 md:px-8 flex flex-col justify-center items-center'>
+    <section className='relative max-w-screen-xl mx-auto px-4 py-28  gap-12 md:px-8 flex flex-col justify-center items-center'>
 
       <motion.div
         initial={{ y: 5, opacity: 0 }}

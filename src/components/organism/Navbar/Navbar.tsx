@@ -4,7 +4,7 @@
 import { useCallback, useState } from 'react'
 import { comfortaa } from '@/fonts/font'
 import LinkIconAside from '@/components/atoms/LinkIcon/LinkIconAside'
-import { PaperIcon, TableDashboardIcon, TemplateIcon, WorkIcon } from '../../../../public/svgComponent'
+import { PaperIcon, TableDashboardIcon, TemplateIcon, WorkIcon, ArrowDown } from '../../../../public/svgComponent'
 import { Link } from '@nextui-org/link'
 import IconCheckedTheme from '@/components/atoms/IconCheckedTheme/IconCheckedTheme'
 import { useTheme } from 'next-themes'
@@ -129,9 +129,10 @@ export default function Navbar({ children, session, isform, userType }: { childr
                   Joyit
                 </h1>
               </Link>
-              <IconCheckedTheme handleTheme={changeMyTheme} />
+
               <div className='flex-1 text-end'>
                 <div className='flex justify-end items-center gap-3'>
+                  <IconCheckedTheme handleTheme={changeMyTheme} />
                   {
                     (session != null)
                       ? (
@@ -228,29 +229,21 @@ export default function Navbar({ children, session, isform, userType }: { childr
                       : (
                         <>
                           {/* //?Iniciar Sesion */}
-                          <Dropdown placement='bottom'>
-                            <DropdownTrigger>
-                              <Button
-                                variant='flat'
-                              >
-                                Ingresa
-                              </Button>
-                            </DropdownTrigger>
-                            <DropdownMenu variant='faded' aria-label='Dropdown menu Login'>
-                              <DropdownItem key='empresa' startContent={<i className='pi pi-user' />} href='/login/signIn/aplicante'>
-                                Profesionales
-                              </DropdownItem>
-                              <DropdownItem key='aplicante' startContent={<i className='pi pi-building' />} href='/login/signIn/empresa'>
-                                Empleadores
-                              </DropdownItem>
-                            </DropdownMenu>
-                          </Dropdown>
+                          <Button
+                            variant='flat'
+                            color='primary'
+                            className='w-[206px] h-[40px] text-color-black'
+
+                          >
+                            Publica Gratis
+                          </Button>
                           {/* //?Crear cuenta */}
                           <Dropdown placement='bottom'>
                             <DropdownTrigger>
                               <Button
-                                variant='solid'
-                                color='primary'
+                                variant='flat'
+                                endContent={<svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-chevron-down' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M6 9l6 6l6 -6' /></svg>}
+                                className='w-[162px] h-[40px] text-color-black'
                               >
                                 Registrate
                               </Button>
@@ -264,8 +257,28 @@ export default function Navbar({ children, session, isform, userType }: { childr
                               </DropdownItem>
                             </DropdownMenu>
                           </Dropdown>
-                        </>
-                      )
+                          <Dropdown placement='bottom'>
+                            <DropdownTrigger>
+                              <Button
+                                variant='flat'
+                                color='primary'
+                                className='w-[162px] h-[40px] text-color-black'
+                                endContent={<svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-chevron-down' width='24' height='24' viewBox='0 0 24 24' strokeWidth='2' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'><path stroke='none' d='M0 0h24v24H0z' fill='none' /><path d='M6 9l6 6l6 -6' /></svg>}
+                              >
+                                Ingresa
+                              </Button>
+                            </DropdownTrigger>
+                            <DropdownMenu variant='faded' aria-label='Dropdown menu Login'>
+                              <DropdownItem key='empresa' startContent={<i className='pi pi-user' />} href='/login/signIn/aplicante'>
+                                Profesionales
+                              </DropdownItem>
+                              <DropdownItem key='aplicante' startContent={<i className='pi pi-building' />} href='/login/signIn/empresa'>
+                                Empleadores
+                              </DropdownItem>
+                            </DropdownMenu>
+                          </Dropdown>
+
+                        </>)
                   }
                 </div>
               </div>

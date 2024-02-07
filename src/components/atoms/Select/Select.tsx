@@ -31,7 +31,7 @@ export default function InputTextTransparent(props: Props) {
         ],
         innerWrapper: 'bg-transparent',
         inputWrapper: [
-          'rounded-l-full',
+          'rounded-r-full',
           'h-[64px]',
           'w-[460px]',
           'border-default-400/60',
@@ -47,7 +47,7 @@ export default function InputTextTransparent(props: Props) {
         ]
       }}
       startContent={icon}
-
+      endContent={<i className='pi pi-chevron-down pr-5' />}
     />
   )
 }

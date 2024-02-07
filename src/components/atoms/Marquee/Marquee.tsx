@@ -34,7 +34,7 @@ export const Marquee = ({
         className={cn('flex w-max animate-marquee items-stretch gap-[--gap]', {
           '[animation-direction:reverse]': reverse,
           'hover:[animation-play-state:paused]': pauseOnHover,
-          'flex-col xl:flex-row   h-full': size === 'large'
+          'flex-col xl:flex-row h-full': size === 'large'
         })}
       >
         {children}

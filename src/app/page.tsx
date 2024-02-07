@@ -5,11 +5,13 @@ import Footer from '@/components/atoms/Footer/Footer'
 import InputTextTransparent from '@/components/atoms/InputTextTransparent/InputTextTransparent'
 import Partners from '@/components/atoms/Partners/partners'
 import Select from '@/components/atoms/Select/Select'
-import { Button } from '@nextui-org/button'
 import { Chip } from '@nextui-org/chip'
 import { motion } from 'framer-motion'
-import CardUI from '@/components/atoms/Card/Card'
 import SectionInfo from '@/components/atoms/SectionInfo/SectionInfo'
+import Puestos from '@/components/atoms/Puestos/puestos'
+import PuestosR from '@/components/atoms/Puestos/puestosR'
+import Beneficios from '@/components/atoms/Beneficios/Beneficios'
+import Testimonios from '@/components/organism/Testimonios/Testimonios'
 
 export default function Home() {
   return (
@@ -65,13 +67,10 @@ export default function Home() {
               <p className='max-w-2xl mx-auto text-foreground/80'>
                 En JoyIt-Ats podrás postular a trabajos exclusivos y cuidadosamente seleccionados en startups y empresas tecnológicas de todo el mundo.
               </p>
-              <div className='items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0'>
-                <form className='grid gap-4'>
-                  <InputTextTransparent placeholder='Puesto, empresa o palabra clave' type='text' icon={<i className='pi pi-search' />} className='w-[30rem]' size='lg' />
-                  <Select />
-                  <Button color='primary' variant='solid'>
-                    Buscar Empleo
-                  </Button>
+              <div className='flex flex-row items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0 max-w-[908px]'>
+                <form className='flex flex-nowrap gap-0.2'>
+                  <InputTextTransparent placeholder='Nombre de empleo' type='text' icon={<i className='pi pi-search ml-5' />} />
+                  <Select placeholder='Ubicación' type='text' icon={<i className='pi pi-map-marker ml-5' />} />
                 </form>
               </div>
             </motion.div>
@@ -84,11 +83,7 @@ export default function Home() {
             opacity: 1
           }}
           transition={{ duration: 0.5 }}
-        >
-          <section>
-            <CardUI />
-          </section>
-        </motion.div>
+        />
         <motion.div
           initial={{ y: 5, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -100,9 +95,13 @@ export default function Home() {
           </div>
         </motion.div>
       </div>
+      <Puestos />
+      <PuestosR />
       <Partners />
+      <Beneficios />
+      <Testimonios />
       <SectionInfo />
-      <Faq />
+      {/* <Faq /> */}
       <Footer />
     </>
   )
